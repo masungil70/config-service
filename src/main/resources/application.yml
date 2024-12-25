@@ -1,0 +1,21 @@
+server:
+  port: 8888
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spare: 5
+
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/masungil70/config-repo.git
+          default-label: main
+          timeout: 5 #원격 저장소와의 연결시 시간한도
+          clone-on-start: true #서비스 시작시 리모트 저장소의 복제본을 로컬에 저장
+          force-pull: true #로컬 저장본이 원격 저장소와 다를 경우 무조건 원격 저장소로부터 다운로드 한다
